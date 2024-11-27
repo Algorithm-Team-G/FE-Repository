@@ -1,6 +1,6 @@
-import axios from 'axios';
+import axios from "axios";
 
-const BASE_URL = 'http://your-server-url/api';
+const BASE_URL = "http://your-server-url/api";
 
 // 업무 분배 케이스 생성하기
 export const generateTaskRecommendations = async (taskIds) => {
