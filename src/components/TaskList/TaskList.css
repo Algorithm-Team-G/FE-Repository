@@ -1,0 +1,29 @@
+.task-list {
+    border: 1px solid #ccc;
+    padding: 20px;
+    background-color: #ffffff;
+    width: 45%; /* Task List와 Add Task가 동일한 넓이를 가짐 */
+    max-width: 500px; /* 최대 넓이 제한 */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.task-search {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+li {
+    margin: 10px 0;
+    display: flex;
+    align-items: center;
+}

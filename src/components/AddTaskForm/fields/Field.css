@@ -1,0 +1,31 @@
+.field-container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 30px;
+    gap: 25px; /* 필드와 레이블 간격 조정 */
+}
+
+.field-label {
+    flex: 1;
+    text-align: center;
+    font-weight: bold;
+    background: #f3f3f3;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.field-input {
+    flex: 2;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 20px;
+    background-color: #f9f9f9;
+    font-size: 14px;
+}
+
+.field-input:focus {
+    border-color: #6a5acd;
+    outline: none;
+    background-color: #fff;
+}

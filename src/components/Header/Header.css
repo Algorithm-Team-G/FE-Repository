@@ -1,0 +1,16 @@
+/* SelectTaskPage.css */
+.select-task-header {
+    text-align: center;
+    font-size: 28px;
+    color: white;
+    background-color: #774B93;
+    padding: 20px;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.select-task-header .leader-name {
+    font-size: 16px;
+    margin-top: 10px;
+    font-weight: normal;
+}
