@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Team Schedule</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="header">
+        <h1>Schedule for your team</h1>
+        <div class="leader-info">
+            <label for="leader-name">Leader: </label>
+            <span id="leader-name" class="highlight">Leader name</span>
+        </div>
+    </header>
+    <main class="main-content">
+        <div class="team-info">
+            <label for="team-name">Team: </label>
+            <span id="team-name" class="highlight">Team name</span>
+            <div class="schedule-container">
+                <div class="roles">
+                    <div class="role">
+                        <button class="role-button">Front-end</button>
+                        <span id="front1-name" class="highlight">Loading...</span>
+                    </div>
+                    <div class="role">
+                        <button class="role-button">Front-end</button>
+                        <span id="front2-name" class="highlight">Loading...</span>
+                    </div>
+                    <div class="role">
+                        <button class="role-button">Back-end</button>
+                        <span id="back1-name" class="highlight">Loading...</span>
+                    </div>
+                    <div class="role">
+                        <button class="role-button">Back-end</button>
+                        <span id="back2-name" class="highlight">Loading...</span>
+                    </div>
+                    <div class="role">
+                        <button class="role-button">AI</button>
+                        <span id="ai1-name" class="highlight">Loading...</span>
+                    </div>
+                    <div class="role">
+                        <button class="role-button">AI</button>
+                        <span id="ai2-name" class="highlight">Loading...</span>
+                    </div>
+                    <div class="role">
+                        <button class="role-button">Designer</button>
+                        <span id="designer1-name" class="highlight">Loading...</span>
+                    </div>
+                    <div class="role">
+                        <button class="role-button">Designer</button>
+                        <span id="designer2-name" class="highlight">Loading...</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="schedule">
+            <div class="schedule-header"></div>
+            <div class="schedule-grid"></div>
+        </div>
+
+        <div class="actions">
+            <button id="add-task-button">+ Add Task</button>
+        </div>
+    </main>
+    <script src="script.js"></script>
+</body>
+</html>
