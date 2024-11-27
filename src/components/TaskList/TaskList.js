@@ -1,38 +1,31 @@
-import React, { useState } from "react";
+import React from "react";
 import "./TaskList.css";
 
-function TaskList({ tasks, onTaskSelect }) {
-    const [selectedTasks, setSelectedTasks] = useState([]);
-
-    const handleSelectTask = (taskId) => {
-        const isSelected = selectedTasks.includes(taskId);
-        const updatedSelectedTasks = isSelected
-            ? selectedTasks.filter((id) => id !== taskId)
-            : [...selectedTasks, taskId];
-
-        setSelectedTasks(updatedSelectedTasks);
-        onTaskSelect(taskId, !isSelected);
+const TaskList = ({ tasks, onTaskSelect }) => {
+    const handleChange = (task, isChecked) => {
+        onTaskSelect(task, isChecked);
     };
 
     return (
         <div className="task-list">
-            <h3>Task List</h3>
-            <ul>
-                {tasks.map((task) => (
-                    <li key={task.title}>
-                        <label>
+            <h3>Unassigned Tasks</h3>
+            {tasks.length === 0 ? (
+                <p>No tasks available</p>
+            ) : (
+                <ul>
+                    {tasks.map((task) => (
+                        <li key={task.id}>
                             <input
                                 type="checkbox"
-                                checked={selectedTasks.includes(task.title)}
-                                onChange={() => handleSelectTask(task.title)}
+                                onChange={(e) => handleChange(task, e.target.checked)}
                             />
-                            {task.title}
-                        </label>
-                    </li>
-                ))}
-            </ul>
+                            <span>{task.title}</span> ({task.team})
+                        </li>
+                    ))}
+                </ul>
+            )}
         </div>
     );
-}
+};
 
 export default TaskList;
