@@ -85,11 +85,12 @@ body {
     background-color: #bbb;
 }
 
+
 .schedule-grid {
     display: grid;
     grid-template-columns: repeat(7, 1fr); /* 7일 동안의 스케줄 */
-    grid-auto-rows: 60px; /* 각 행의 높이 */
-    grid-auto-columns: 155px;
+    grid-auto-rows: 59px; /* 각 행의 높이 */
+    grid-auto-columns: 70px;
     gap: 10px; /* 칸 사이 여백 */
     position: relative;
     border: 1px solid #ddd;
@@ -100,7 +101,6 @@ body {
 .task{
     position: relative;
     height: 40px;
-    background-color: rgba(0, 123, 255, 0.7);
     color: white;
     font-size: 14px;
     display: flex;

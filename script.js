@@ -71,7 +71,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 102: {
                     name: "Lily",
                     tasks: [
-                        { id: 3, title: "Task C", begin: "2024-12-01", duration: 4 }, // person A
+                        { id: 3, title: "Task C", begin: "2024-12-02", duration: 4 }, // person A
                         { id: 5, title: "Task E", begin: "2024-11-29", duration: 1 }, // person B
                     ],
                 },
@@ -87,7 +87,6 @@ document.addEventListener("DOMContentLoaded", () => {
                     name: "Emma",
                     tasks: [
                         { id: 8, title: "Task A", begin: "2024-11-28", duration: 3 }, // person A
-                        { id: 9, title: "Task E", begin: "2024-12-02", duration: 1 }, // person B
                     ],
                 },
                 105: {
@@ -106,7 +105,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 107: {
                     name: "Chris",
                     tasks: [
-                        { id: 13, title: "Task A", begin: "2024-11-27", duration: 3 }, // person A
+                        { id: 13, title: "Task D", begin: "2024-11-27", duration: 3 }, // person A
                         { id: 14, title: "Task E", begin: "2024-12-02", duration: 1 }, // person B
                     ],
                 },
@@ -115,6 +114,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     tasks: [
                         { id: 15, title: "Task A", begin: "2024-11-26", duration: 3 }, // person A
                         { id: 16, title: "Task E", begin: "2024-12-03", duration: 1 }, // person B
+                        { id: 17, title: "Task B", begin: "2024-11-30", duration: 2 }, // p
                     ],
                 },
             },
@@ -169,6 +169,19 @@ document.addEventListener("DOMContentLoaded", () => {
         return task;
     }
 
+    const taskColors = {}; // title별 색상 매핑 객체
+    const colorPalette = ["#f78da7", "#8bc6f0", "#f7d794", "#63c7b2", "#d28df0"];
+
+    function getColorForTitle(title) {
+        if (!taskColors[title]) {
+            // title에 해당하는 색상이 없으면 새롭게 할당
+            const colorIndex = Object.keys(taskColors).length % colorPalette.length;
+            taskColors[title] = colorPalette[colorIndex];
+        }
+        return taskColors[title];
+    }
+
+
     // Worker별로 작업(Task) 표시
     function renderTasks() {
         workersOrder.forEach((worker, rowIndex) => {
@@ -190,6 +203,9 @@ document.addEventListener("DOMContentLoaded", () => {
                 const taskDiv = document.createElement("div");
                 taskDiv.className = "task";
                 taskDiv.textContent = task.title;
+
+                // Title별 색상을 적용
+                taskDiv.style.backgroundColor = getColorForTitle(task.title);
 
                 // grid 위치 및 길이 설정
                 taskDiv.style.gridColumnStart = dayOffset + 1; // 시작 위치
