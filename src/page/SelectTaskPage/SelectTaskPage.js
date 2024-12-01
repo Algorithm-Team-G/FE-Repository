@@ -1,20 +1,30 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import AddTaskForm from "../../components/AddTaskForm/AddTaskForm";
 import TaskList from "../../components/TaskList/TaskList";
 import Header from "../../components/Header/Header";
-import { assignTasks, getUnassignedTasks } from "../../API/taskApi"; // 수정된 API import
+import { assignTasks, getUnassignedTasks } from "../../API/taskApi";
 import "./SelectTaskPage.css";
+
+// jobOptions 문자열을 job_id로 매핑
+const jobIdMapping = {
+    "프론트엔드": 1,
+    "백엔드": 2,
+    "AI": 3,
+    "디자이너": 4,
+};
 
 function SelectTaskPage() {
     const [tasks, setTasks] = useState([]);
     const [selectedTasks, setSelectedTasks] = useState([]);
-    const jobOptions = ["Front-End Developer", "Back-End Developer", "UI Designer", "Database Administrator"];
+    const navigate = useNavigate();
+    const jobOptions = Object.keys(jobIdMapping); // "프론트엔드", "백엔드", "AI", "디자이너"
 
-    // API로 분배되지 않은 업무 가져오기
     useEffect(() => {
         const fetchTasks = async () => {
             try {
                 const data = await getUnassignedTasks();
+                console.log("Fetched tasks:", data); // API 데이터 확인
                 setTasks(data); // API 데이터 상태에 저장
             } catch (error) {
                 console.error("Error fetching tasks:", error);
@@ -23,35 +33,47 @@ function SelectTaskPage() {
         fetchTasks();
     }, []);
 
-    // 새 업무 추가
     const handleAddTask = (newTask) => {
-        setTasks([...tasks, newTask]);
+        const mappedTask = {
+            ...newTask,
+            job_id: jobIdMapping[newTask.job_field], // job_field를 job_id로 변환
+        };
+        setTasks([...tasks, mappedTask]);
     };
 
-    // 업무 선택 관리
     const handleTaskSelect = (task, isSelected) => {
+        if (!task || !task.id) {
+            console.error("Invalid task object during selection:", task);
+            return;
+        }
         if (isSelected) {
-            setSelectedTasks([...selectedTasks, task]);
+            setSelectedTasks([...selectedTasks, task.id]);
         } else {
-            setSelectedTasks(selectedTasks.filter((t) => t.id !== task.id));
+            setSelectedTasks(selectedTasks.filter((id) => id !== task.id));
         }
     };
 
-    // 선택된 업무 스케줄 생성
+
     const handleCreateSchedule = async () => {
-        if (selectedTasks.length === 0) {
+        console.log("Selected task IDs to send to backend:", selectedTasks);
+
+        if (!selectedTasks || selectedTasks.length === 0) {
+            console.error("No tasks selected. Current selectedTasks:", selectedTasks);
             alert("Please select at least one task!");
             return;
         }
 
         try {
-            await assignTasks(selectedTasks.map((task) => task.id));
-            alert("Tasks have been scheduled!");
+            const response = await assignTasks(selectedTasks);
+            console.log("Response from backend:", response);
+            navigate("/solution", { state: { schedule: response } });
         } catch (error) {
-            console.error("Error:", error);
+            console.error("Error while assigning tasks:", error);
             alert("Failed to schedule tasks.");
         }
     };
+
+
 
     return (
         <div className="select-task-page">

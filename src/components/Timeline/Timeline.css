@@ -1,0 +1,75 @@
+.timeline-container {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    background-color: #f9f9f9;
+    width: 100%;
+}
+
+.date-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.date-header .side-space {
+    width: 15vw; /* 역할/이름 공간 */
+}
+
+.date {
+    flex: 1;
+    text-align: center;
+    font-weight: bold;
+    padding: 10px 0;
+    border: 1px solid #ddd;
+    background-color: #f0f0f0;
+}
+
+.timeline {
+    display: flex;
+    flex-direction: column;
+}
+
+.team {
+    margin-bottom: 10px;
+}
+
+.role {
+    font-weight: bold;
+    font-size: 1.2em;
+    margin-bottom: 10px;
+}
+
+.worker-row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.worker-name {
+    width: 15vw;
+    padding: 10px;
+    background-color: #eee;
+    border: 1px solid #ddd;
+    text-align: center;
+}
+
+.task-bars {
+    position: relative;
+    flex: 1;
+    height: 40px;
+}
+
+.task-bar {
+    position: absolute;
+    top: 5px;
+    height: 30px;
+    border-radius: 5px;
+    color: white;
+    text-align: center;
+    line-height: 30px;
+    font-size: 0.9em;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}

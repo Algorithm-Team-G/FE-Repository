@@ -1,0 +1,17 @@
+.team-schedule-page {
+    display: flex;
+    width: 100%;
+    height: 100%;
+}
+
+.side-panel-container {
+    flex: 1;
+    border-right: 1px solid #ddd;
+    padding: 20px;
+}
+
+.timeline-container {
+    flex: 3;
+    padding: 20px;
+    overflow-x: auto;
+}

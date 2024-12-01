@@ -1,0 +1,33 @@
+.side-panel {
+    width: 100%;
+}
+
+.team-section {
+    margin-bottom: 20px;
+}
+
+.team-name {
+    font-size: 18px;
+    font-weight: bold;
+    color: #6a1b9a;
+    margin-bottom: 10px;
+}
+
+.worker-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.worker-icon {
+    width: 24px;
+    height: 24px;
+    background-color: #d1c4e9;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.worker-name {
+    font-size: 14px;
+    color: #555;
+}
