@@ -45,7 +45,7 @@ function SolutionPage() {
                                             <li key={`worker-${workerId}`}>
                                                 {worker.name}:{" "}
                                                 {worker.tasks
-                                                    .map((task) => `${task.name} (Task ID: ${task.id})`)
+                                                    .map((task) => `${task.name}`)
                                                     .join(", ")}
                                             </li>
                                         ))}
